@@ -8,16 +8,16 @@ You can add or remove players from a game and see all players scores and update 
   HTML, CSS, Bootstrap, JavaScipt, React, Axios, Rails
 
 ## Project Links
-1. [Client Deployed Site]()
+1. [Client Deployed Site](https://nathanfee.github.io/game-knight-client/#/)
 
-2. [Client Repository]()
+2. [Client Repository](https://github.com/NathanFee/game-knight-client)
 
-3. [API Deployed Site]()
+3. [API Deployed Site](https://game-knight-api.herokuapp.com/)
 
-4. [API Repository]()
+4. [API Repository](https://github.com/NathanFee/game-knight-api)
 
 ## Wire Frames
-![Imgur]()
+![Imgur](https://i.imgur.com/7lS2YkR.jpg)
 
 ## User Stories
 - As an unregistered user, I would like to sign up with email and password.
