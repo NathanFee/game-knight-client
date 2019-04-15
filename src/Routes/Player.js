@@ -21,9 +21,13 @@ class Player extends Component {
   }
 
   handleDelete = () => {
-    axios.delete(`${apiUrl}/players/${this.state.player.id}`)
-      .then(() => this.setState({ shouldRedirect: true }))
-      .catch(console.log)
+    axios({
+      url: `${apiUrl}/players`,
+      method: 'delete',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
   }
 
   render () {
