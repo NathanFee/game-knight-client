@@ -9,6 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Players from './Routes/Players.js'
+import Player from './Routes/Player.js'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -46,6 +47,10 @@ class App extends Component {
         <main className="container">
           <AuthenticatedRoute user={user} exact path='/players' render={() => (
             <Players alert={this.alert} user={user}/>
+          )} />
+
+          <AuthenticatedRoute user={user} exact path='/players/:id' render={(props) => (
+            <Player alert={this.alert} user={user}/>
           )} />
 
           <Route path='/sign-up' render={() => (
