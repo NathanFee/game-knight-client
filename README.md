@@ -17,7 +17,7 @@ You can add or remove players from a game and see all players scores and update 
 4. [API Repository](https://github.com/NathanFee/game-knight-api)
 
 ## Wire Frames
-![Imgur](https://i.imgur.com/7lS2YkR.jpg)
+![Wire Frames](https://i.imgur.com/7lS2YkR.jpg)
 
 ## User Stories
 - As an unregistered user, I would like to sign up with email and password.
