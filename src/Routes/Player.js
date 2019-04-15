@@ -22,12 +22,14 @@ class Player extends Component {
 
   handleDelete = () => {
     axios({
-      url: `${apiUrl}/players`,
+      url: `${apiUrl}/players/${this.state.player.id}`,
       method: 'delete',
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
+      .then(() => this.setState({ shouldRedirect: true }))
+      .catch(console.log)
   }
 
   render () {
@@ -36,8 +38,7 @@ class Player extends Component {
     }
     if (this.state.shouldRedirect) {
       return <Redirect to={{
-        pathname: '/players',
-        state: { message: 'Successfully deleted player' }
+        pathname: '/players'
       }}/>
     }
     const { name, score, wins, loses } = this.state.player
