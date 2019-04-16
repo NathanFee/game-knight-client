@@ -56,7 +56,15 @@ class PlayerCreate extends Component {
   }
 
   handleKnighted = event => {
-    const knightedName = this.state.player.name + ' the ' + Sentencer.make('{{adjective}}')
+    let name = this.state.player.name
+    let words = name.split(' ')
+    if (words.includes('the')) {
+      const indexOfThe = words.indexOf('the')
+      words = words.splice(0, indexOfThe)
+      name = words.join(' ')
+    }
+
+    const knightedName = name + ' the ' + Sentencer.make('{{adjective}}')
     const knightedPlayer = { ...this.state.player, name: knightedName }
 
     this.setState({
