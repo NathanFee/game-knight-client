@@ -12,7 +12,7 @@ const PlayerForm = (
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" value={name} name="name" required onChange={handleChange}/>
       </Form.Group>
-      {!edit && <Button variant="primary" onClick={handleKnighted}>Knight Player</Button>}
+      {!edit && <Button variant="primary" className="m-1" onClick={handleKnighted}>Knight Player</Button>}
 
       { edit &&
         <Fragment>
@@ -33,7 +33,7 @@ const PlayerForm = (
         </Fragment>
       }
 
-      <Button variant="primary" type="submit"> Submit </Button>
+      <Button variant="primary" type="submit" className="m-1"> Submit </Button>
     </Form>
   </Fragment>
 )

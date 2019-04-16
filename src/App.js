@@ -12,6 +12,8 @@ import Players from './Routes/Players.js'
 import Player from './Routes/Player.js'
 import PlayerCreate from './Routes/PlayerCreate.js'
 import PlayerEdit from './Routes/PlayerEdit.js'
+import Home from './Home.js'
+import Menu from './Menu.js'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -47,6 +49,12 @@ class App extends Component {
           </Alert>
         ))}
         <main className="container">
+          <Route exact path='/' render={() => (
+            <Home/>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/menu' render={() => (
+            <Menu alert={this.alert} user={user}/>
+          )} />
           <AuthenticatedRoute user={user} exact path='/players' render={() => (
             <Players alert={this.alert} user={user}/>
           )} />

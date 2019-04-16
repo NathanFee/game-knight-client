@@ -14,6 +14,7 @@ const unauthenticatedOptions = (
   <React.Fragment>
     <Link to="/sign-up">Sign Up</Link>
     <Link to="/sign-in">Sign In</Link>
+    <Link to="/">Menu</Link>
   </React.Fragment>
 )
 
