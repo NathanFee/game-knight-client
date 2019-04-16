@@ -3,6 +3,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Redirect } from 'react-router'
 import PlayerForm from './PlayerForm.js'
+import Sentencer from 'sentencer'
 
 class PlayerCreate extends Component {
   constructor () {
@@ -15,6 +16,7 @@ class PlayerCreate extends Component {
         wins: 0,
         loses: 0
       },
+      knighted: false,
       created: false,
       message: null
     }
@@ -49,9 +51,19 @@ class PlayerCreate extends Component {
     const inputName = event.target.name
     const updatedInputValue = event.target.value
 
-    const updatedplayer = { ...this.state.player, [inputName]: updatedInputValue }
+    const updatedPlayer = { ...this.state.player, [inputName]: updatedInputValue }
 
-    this.setState({ player: updatedplayer })
+    this.setState({ player: updatedPlayer })
+  }
+
+  handleKnighted = event => {
+    const knightedName = this.state.player.name + ' the ' + Sentencer.make('{{adjective}}')
+    const knightedPlayer = { ...this.state.player, name: knightedName }
+
+    this.setState({
+      player: knightedPlayer,
+      knighted: true
+    })
   }
 
   render () {
@@ -73,6 +85,7 @@ class PlayerCreate extends Component {
           message = {message}
           handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}
+          handleKnighted = {this.handleKnighted}
         />
       </Fragment>
     )

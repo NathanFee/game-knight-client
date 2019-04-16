@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Alert, Form, Button } from 'react-bootstrap'
 
 const PlayerForm = (
-  { name, score, wins, loses, message, handleChange, handleSubmit, edit }
+  { name, score, wins, loses, message, handleChange, handleSubmit, handleKnighted, edit }
 ) => (
   <Fragment>
     {message && <Alert variant="danger" dismissible>{message}</Alert>}
@@ -12,6 +12,8 @@ const PlayerForm = (
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" value={name} name="name" required onChange={handleChange}/>
       </Form.Group>
+      {!edit && <Button variant="primary" onClick={handleKnighted}>Knight Player</Button>}
+
       { edit &&
         <Fragment>
           <Form.Group controlId="CreateEditForm">
