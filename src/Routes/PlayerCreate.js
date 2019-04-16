@@ -16,7 +16,6 @@ class PlayerCreate extends Component {
         wins: 0,
         loses: 0
       },
-      knighted: false,
       created: false,
       message: null
     }
@@ -61,8 +60,7 @@ class PlayerCreate extends Component {
     const knightedPlayer = { ...this.state.player, name: knightedName }
 
     this.setState({
-      player: knightedPlayer,
-      knighted: true
+      player: knightedPlayer
     })
   }
 
