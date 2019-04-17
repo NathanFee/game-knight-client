@@ -62,17 +62,18 @@ class ScoreKeeper extends Component {
     const { inPlay } = this.state
     return (
       <Fragment>
-        <ul>
-          {inPlay.map(player => (
-            <li key={player.id}>
-              <div className="player-score-div">
-                <p>{player.score} {player.name}</p>
-                <Button name={player.id} value="Sub" variant="primary" onClick={this.handleSub} className="m-1">-</Button>
-                <Button name={player.id} value="Add" variant="primary" onClick={this.handleAdd} className="m-1">+</Button>
+        {inPlay.map(player => (
+          <div key={player.id} className="player-score-div">
+            <h4>{player.name}</h4>
+            <div className="end-container">
+              <div className="score-container">
+                <h4>{player.score}</h4>
               </div>
-            </li>
-          ))}
-        </ul>
+              <Button name={player.id} value="Sub" variant="primary" onClick={this.handleSub} className="m-1">-</Button>
+              <Button name={player.id} value="Add" variant="primary" onClick={this.handleAdd} className="m-1">+</Button>
+            </div>
+          </div>
+        ))}
       </Fragment>
     )
   }

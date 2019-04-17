@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
+import './Routes/ScoreKeeper.scss'
 import { Route } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
