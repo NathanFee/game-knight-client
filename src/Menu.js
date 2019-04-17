@@ -12,6 +12,10 @@ const Menu = () => (
       <Button variant="secondary" className="m-1">Create New Players </Button>
     </Link>
 
+    <Link to="/score-keeper">
+      <Button variant="secondary" className="m-1">Score Keeper</Button>
+    </Link>
+
   </Fragment>
 )
 

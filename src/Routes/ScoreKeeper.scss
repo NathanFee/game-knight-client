@@ -1,0 +1,12 @@
+$success: #c7f282;
+$warning: #f1e681;
+$error: #f08181;
+$charcoal: #ccc;
+
+player-score-div {
+  align-items: center;
+  background-color: $warning;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
