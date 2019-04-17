@@ -21,16 +21,14 @@ class Players extends Component {
   }
 
   renderPlayers = () => (
-    <ul>
+    <Fragment>
       {this.state.players.map(player => (
-        <li key={player.id}>
-          <div>
-            <Link to={'/players/' + player.id}>{player.name}</Link>
-            {console.log(player)}
-          </div>
-        </li>
+        <div key={player.id} className="player-div">
+          <h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses} Score: {player.score}</p>
+          <Link to={'/players/' + player.id}>Edit</Link>
+        </div>
       ))}
-    </ul>
+    </Fragment>
   )
 
   renderLoading = () => (
