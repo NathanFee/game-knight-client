@@ -20,29 +20,28 @@ class Players extends Component {
       .catch(console.log)
   }
 
-  renderplayers = () => (
+  renderPlayers = () => (
     <ul>
       {this.state.players.map(player => (
         <li key={player.id}>
-          <Link to={'/players/' + player.id}>{player.name}</Link>
-          {console.log(player)}
+          <div>
+            <Link to={'/players/' + player.id}>{player.name}</Link>
+            {console.log(player)}
+          </div>
         </li>
       ))}
     </ul>
   )
 
   renderLoading = () => (
-    <Fragment>
-      <h4>Loading...</h4>
-    </Fragment>
+    <option>Loading...</option>
   )
 
   render () {
     console.log('players rendered')
     return (
       <Fragment>
-        <h1>Players</h1>
-        {this.state.players.length === 0 ? this.renderLoading() : this.renderplayers()}
+        {this.state.players.length === 0 ? this.renderLoading() : this.renderPlayers()}
       </Fragment>
     )
   }

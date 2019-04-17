@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig.js'
 import { Redirect, Link, withRouter } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 class Player extends Component {
   constructor () {
@@ -49,8 +50,8 @@ class Player extends Component {
         <p>Score: {score}</p>
         <p>wins: {wins}</p>
         <p>loses: {loses}</p>
-        <button onClick={this.handleDelete}>Delete</button>
-        <Link to={this.props.match.url + '/edit'}><button>Edit</button></Link>
+        <Button variant="primary" className="m-1" onClick={this.handleDelete}>Delete</Button>
+        <Link to={this.props.match.url + '/edit'}><Button variant="primary" className="m-1">Edit</Button></Link>
 
       </Fragment>
     )

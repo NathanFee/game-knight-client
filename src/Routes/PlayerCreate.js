@@ -14,7 +14,8 @@ class PlayerCreate extends Component {
         name: '',
         score: 0,
         wins: 0,
-        loses: 0
+        loses: 0,
+        playing: false
       },
       created: false,
       message: null
@@ -39,7 +40,7 @@ class PlayerCreate extends Component {
         player: response.data.player
       }))
       .catch(() => this.setState({
-        player: { ...player, name: '', score: 0, wins: 0, loses: 0 },
+        player: { ...player, name: '', score: 0, wins: 0, loses: 0, playing: false },
         message: 'Create failed. Please fill out forms and try again.'
       }))
   }
