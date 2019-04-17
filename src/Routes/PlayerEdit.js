@@ -11,8 +11,7 @@ class PlayerEdit extends Component {
 
     this.state = {
       player: null,
-      updated: false,
-      message: null
+      updated: false
     }
   }
 
@@ -37,10 +36,10 @@ class PlayerEdit extends Component {
       data: { player }
     })
       .then(() => this.setState({ updated: true }))
-      .catch(() => this.setState({
-        player: { ...player, name: '', score: '', wins: '', loses: '' },
-        message: 'Update failed. Please fill out forms and try again.'
-      }))
+      .catch(() => {
+        this.props.alert('Error on update.', 'danger')
+        this.setState({ player: { ...player, name: '', score: '', wins: '', loses: '' } })
+      })
   }
 
   handleChange = event => {
