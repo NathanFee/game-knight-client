@@ -28,7 +28,14 @@ class Players extends Component {
 
   sortedPlayers = () => {
     const playersCopy = this.state.players.slice(0)
-    const sortedPlayers = playersCopy.sort((a, b) => b.wins - a.wins)
+    const sortedPlayers = playersCopy.sort((a, b) => {
+      // sort by wins, if equal sort by loses
+      if (a.wins > b.wins) return -1
+      if (a.wins < b.wins) return 1
+      // wins must be equal sort by loses
+      if (a.loses > b.loses) return 1
+      if (a.loses < b.loses) return -1
+    })
     return sortedPlayers
   }
 
