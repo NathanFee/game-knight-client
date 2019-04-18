@@ -16,6 +16,9 @@ You can add or remove players from a game and see all players scores and update 
 
 4. [API Repository](https://github.com/NathanFee/game-knight-api)
 
+## Screen Shot of App
+![Screen Shot](https://i.imgur.com/0Qlbo4m.png)
+
 ## Wire Frames
 ![Wire Frames](https://i.imgur.com/7lS2YkR.jpg)
 
