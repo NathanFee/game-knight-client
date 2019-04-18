@@ -42,12 +42,15 @@ class Players extends Component {
   renderPlayers = () => (
     <Fragment>
       <h2>Leader Board</h2>
-      {this.sortedPlayers().map(player => (
-        <div key={player.id} className="player-div">
-          <h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
-          <Link to={'/players/' + player.id}><i className="fas fa-search"></i></Link>
-        </div>
-      ))}
+      {this.sortedPlayers().map((player, index) => {
+        index++
+        return (
+          <div key={player.id} className="player-div">
+            <h1>{index}</h1><h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
+            <Link to={'/players/' + player.id}><i className="fas fa-search"></i></Link>
+          </div>
+        )
+      }) }
     </Fragment>
   )
 

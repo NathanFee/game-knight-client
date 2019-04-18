@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 import './Header.scss'
 
@@ -7,7 +8,6 @@ const authenticatedOptions = (
   <React.Fragment>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
-    <Link to="/menu">Menu</Link>
   </React.Fragment>
 )
 
@@ -24,15 +24,34 @@ const alwaysOptions = (
   </React.Fragment>
 )
 
+const menuOptions = (
+  <React.Fragment>
+    <Link to="/players">
+      <Button variant="secondary" className="m-1">Leader Board</Button>
+    </Link>
+
+    <Link to="/player-create">
+      <Button variant="secondary" className="m-1">Create New Players </Button>
+    </Link>
+
+    <Link to="/score-keeper">
+      <Button variant="secondary" className="m-1">Score Keeper</Button>
+    </Link>
+  </React.Fragment>
+)
+
 const Header = ({ user }) => (
-  <header className="main-header">
-    <h1>Game Knight <img src="https://i.imgur.com/aYignP0.png" alt="cartoon knight" height='50px' width='40px'/></h1>
-    <nav>
-      { user && <span>Welcome, {user.email}</span>}
-      { user ? authenticatedOptions : unauthenticatedOptions }
-      { alwaysOptions }
-    </nav>
-  </header>
+  <Fragment>
+    <header className="main-header">
+      <h1>Game Knight <img src="https://i.imgur.com/aYignP0.png" alt="cartoon knight" height='50px' width='40px'/></h1>
+      <nav>
+        { user && <span>Welcome, {user.email}</span>}
+        { user ? authenticatedOptions : unauthenticatedOptions }
+        { alwaysOptions }
+      </nav>
+    </header>
+    <nav className="game-knight-menu">{ user ? menuOptions : '' }</nav>
+  </Fragment>
 )
 
 export default Header

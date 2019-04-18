@@ -15,7 +15,6 @@ import Player from './Routes/Player.js'
 import PlayerCreate from './Routes/PlayerCreate.js'
 import PlayerEdit from './Routes/PlayerEdit.js'
 import Home from './Home.js'
-import Menu from './Menu.js'
 import ScoreKeeper from './Routes/ScoreKeeper.js'
 
 import Alert from 'react-bootstrap/Alert'
@@ -61,9 +60,6 @@ class App extends Component {
         <main className="container">
           <Route exact path='/' render={() => (
             <Home/>
-          )} />
-          <AuthenticatedRoute user={user} exact path='/menu' render={(props) => (
-            <Menu alert={this.alert} user={user}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/score-keeper' render={(props) => (
             <ScoreKeeper alert={this.alert} user={user}/>
