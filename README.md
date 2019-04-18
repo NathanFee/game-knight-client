@@ -5,7 +5,7 @@ Game Knight is an SPA that makes keeping score during your game nights easier.
 You can add or remove players from a game and see all players scores and update them as you go.
 
 ## Technologies
-  HTML, CSS, Bootstrap, JavaScipt, React, Axios, Rails
+  Front-End: HTML, CSS, Bootstrap, JavaScipt, React, Axios. Back-end: Ruby, Ruby on Rails, Heroku.
 
 ## Project Links
 1. [Client Deployed Site](https://nathanfee.github.io/game-knight-client/#/)
