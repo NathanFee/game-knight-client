@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap'
 const Menu = () => (
   <Fragment>
     <Link to="/players">
-      <Button variant="secondary" className="m-1">Players</Button>
+      <Button variant="secondary" className="m-1">Leader Board</Button>
     </Link>
 
     <Link to="/player-create">

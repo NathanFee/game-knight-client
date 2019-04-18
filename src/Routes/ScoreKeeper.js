@@ -94,7 +94,7 @@ class ScoreKeeper extends Component {
       )
       this.setState({ inPlay: [...this.state.inPlay, addedPlayer] })
     } else {
-      console.log('duplicate ============================')
+      this.props.alert('This player has already been added to the game.', 'danger')
     }
   }
 
@@ -112,6 +112,41 @@ class ScoreKeeper extends Component {
     ))
   )
 
+  handleWinner = (event) => {
+    event.preventDefault()
+
+    if (this.state.inPlay.length === 0) {
+      this.props.alert('Someone has to be playing to win.', 'danger')
+    } else {
+      const winner = this.state.inPlay.reduce(
+        (player, winner) => player.score > winner.score ? player : winner, this.state.inPlay[0]
+      )
+
+      this.props.alert(`${winner.name} Wins!`, 'warning')
+
+      const updatedPlayers = this.state.inPlay.map(player => {
+        if (player.id === winner.id) {
+          player.wins += 1
+          return player
+        } else {
+          player.loses += 1
+          return player
+        }
+      })
+      console.log(updatedPlayers)
+      updatedPlayers.forEach(player => {
+        axios({
+          url: `${apiUrl}/players/${player.id}`,
+          method: 'patch',
+          headers: {
+            'Authorization': `Token token=${this.props.user.token}`
+          },
+          data: { player }
+        })
+      })
+    }
+  }
+
   render () {
     return (
       <Fragment>
@@ -124,8 +159,8 @@ class ScoreKeeper extends Component {
           </Form.Group>
           <Button variant="primary" type="submit" className="m-1"> Add Player </Button>
         </Form>
-
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
+        <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner</Button>
       </Fragment>
     )
   }

@@ -26,17 +26,22 @@ class Players extends Component {
       .catch(console.log)
   }
 
+  sortedPlayers = () => {
+    const playersCopy = this.state.players.slice(0)
+    const sortedPlayers = playersCopy.sort((a, b) => b.wins - a.wins)
+    return sortedPlayers
+  }
+
   renderPlayers = () => (
-    <ul>
-      {this.state.players.map(player => (
-        <li key={player.id}>
-          <div>
-            <Link to={'/players/' + player.id}>{player.name}</Link>
-            {console.log(player)}
-          </div>
-        </li>
+    <Fragment>
+      <h2>Leader Board</h2>
+      {this.sortedPlayers().map(player => (
+        <div key={player.id} className="player-div">
+          <h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses} Score: {player.score}</p>
+          <Link to={'/players/' + player.id}>View</Link>
+        </div>
       ))}
-    </ul>
+    </Fragment>
   )
 
   renderLoading = () => (

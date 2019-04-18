@@ -56,8 +56,8 @@ class Player extends Component {
         <p>Score: {score}</p>
         <p>wins: {wins}</p>
         <p>loses: {loses}</p>
-        <Button variant="primary" className="m-1" onClick={this.handleDelete}>Delete</Button>
-        <Link to={this.props.match.url + '/edit'}><Button variant="primary" className="m-1">Edit</Button></Link>
+        <Button variant="danger" className="m-1" onClick={this.handleDelete}>Delete</Button>
+        <Link to={this.props.match.url + '/edit'}><Button variant="info" className="m-1">Edit</Button></Link>
 
       </Fragment>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import './Routes/ScoreKeeper.scss'
+import './Routes/Players.scss'
 import { Route } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
@@ -34,7 +35,14 @@ class App extends Component {
   clearUser = () => this.setState({ user: null })
 
   alert = (message, type) => {
-    this.setState({ alerts: [...this.state.alerts, { message, type }] })
+    const { alerts } = this.state
+
+    this.setState({ alerts: [...alerts, { message, type }] })
+
+    // clears alerts after 2 seconds
+    setTimeout(() => {
+      this.setState({ alerts: [] })
+    }, 2000)
   }
 
   render () {

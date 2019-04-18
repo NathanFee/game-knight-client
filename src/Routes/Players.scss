@@ -1,0 +1,27 @@
+$success: #c7f282;
+$warning: #f1e681;
+$error: #f08181;
+$charcoal: #ccc;
+
+.player-div {
+  align-items: center;
+  background-color: $success;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 10px;
+  width: 50vw;
+
+  .end-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    h4 {
+      margin-right: 20px;
+    }
+
+  }
+}
