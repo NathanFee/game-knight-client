@@ -75,26 +75,6 @@ class ScoreKeeper extends Component {
     this.setState({ inPlay: updatePlayer })
   }
 
-  renderInPlay = () => {
-    const { inPlay } = this.state
-    return (
-      <Fragment>
-        {inPlay.map(player => (
-          <div key={player.id} className="player-score-div">
-            <h4>{player.name}</h4>
-            <div className="end-container">
-              <div className="score-container">
-                <h4>{player.score}</h4>
-              </div>
-              <Button name={player.id} value="Sub" variant="primary" onClick={this.handleSub} className="m-1">-</Button>
-              <Button name={player.id} value="Add" variant="primary" onClick={this.handleAdd} className="m-1">+</Button>
-            </div>
-          </div>
-        ))}
-      </Fragment>
-    )
-  }
-
   handleAddPlayer = () => {
     event.preventDefault()
     const selectedPlayerId = this.state.selectedPlayer
@@ -107,6 +87,15 @@ class ScoreKeeper extends Component {
     } else {
       this.props.alert('This player has already been added to the game.', 'danger')
     }
+  }
+
+  handleRemovePlayer = (event) => {
+    event.preventDefault()
+    const playerId = parseInt(event.target.name)
+    const { inPlay } = this.state
+
+    const leftInPlay = inPlay.filter(player => player.id !== playerId)
+    this.setState({ inPlay: leftInPlay })
   }
 
   handleSelect = (event) => {
@@ -165,6 +154,27 @@ class ScoreKeeper extends Component {
         })
       }
     }
+  }
+
+  renderInPlay = () => {
+    const { inPlay } = this.state
+    return (
+      <Fragment>
+        {inPlay.map(player => (
+          <div key={player.id} className="player-score-div">
+            <Button name={player.id} variant="danger" onClick={this.handleRemovePlayer} className="m-1">x</Button>
+            <h4>{player.name}</h4>
+            <div className="end-container">
+              <div className="score-container">
+                <h4>{player.score}</h4>
+              </div>
+              <Button name={player.id} value="Sub" variant="primary" onClick={this.handleSub} className="m-1">-</Button>
+              <Button name={player.id} value="Add" variant="primary" onClick={this.handleAdd} className="m-1">+</Button>
+            </div>
+          </div>
+        ))}
+      </Fragment>
+    )
   }
 
   render () {
