@@ -25,3 +25,13 @@ $charcoal: #ccc;
 
   }
 }
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.form-group {
+  margin-bottom: 0;
+}

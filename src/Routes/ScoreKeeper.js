@@ -68,15 +68,11 @@ class ScoreKeeper extends Component {
     event.preventDefault()
     const { inPlay } = this.state
 
-    if (inPlay.length === 0) {
-      this.props.alert('No one can win unless, someone is playing... Unless you\'re Charlie Sheen... #winning', 'danger')
-    } else {
-      const updatePlayer = inPlay.map(player => {
-        player.score = 0
-        return player
-      })
-      this.setState({ inPlay: updatePlayer })
-    }
+    const updatePlayer = inPlay.map(player => {
+      player.score = 0
+      return player
+    })
+    this.setState({ inPlay: updatePlayer })
   }
 
   handleAddPlayer = () => {
@@ -120,47 +116,45 @@ class ScoreKeeper extends Component {
     ))
   )
 
+  scoresZero = () => {
+    const zero = this.state.inPlay.every(player => player.score === 0)
+    return zero
+  }
+
   handleWinner = (event) => {
     event.preventDefault()
+    const winner = this.state.inPlay.reduce(
+      (player, winner) => player.score > winner.score ? player : winner, this.state.inPlay[0]
+    )
 
-    if (this.state.inPlay.length === 0) {
-      this.props.alert('Someone has to be playing to win.', 'danger')
-    } else if (this.state.inPlay.length === 1) {
-      this.props.alert('Get some friends and come back.', 'danger')
+    const tie = this.state.inPlay.filter(player => player.score === winner.score)
+
+    if (tie.length > 1) {
+      this.props.alert('There are no ties in Game Kight, Fight to the Death!!', 'danger')
     } else {
-      const winner = this.state.inPlay.reduce(
-        (player, winner) => player.score > winner.score ? player : winner, this.state.inPlay[0]
-      )
+      this.props.alert(`${winner.name} Wins!`, 'warning')
 
-      const tie = this.state.inPlay.filter(player => player.score === winner.score)
-
-      if (tie.length > 1) {
-        this.props.alert('There are no ties in Game Kight, Fight to the Death!!', 'danger')
-      } else {
-        this.props.alert(`${winner.name} Wins!`, 'warning')
-
-        const updatedPlayers = this.state.inPlay.map(player => {
-          if (player.id === winner.id) {
-            player.wins += 1
-            player.score = 0
-            return player
-          } else {
-            player.loses += 1
-            player.score = 0
-            return player
-          }
+      const updatedPlayers = this.state.inPlay.map(player => {
+        if (player.id === winner.id) {
+          player.wins += 1
+          player.score = 0
+          return player
+        } else {
+          player.loses += 1
+          player.score = 0
+          return player
+        }
+      })
+      updatedPlayers.forEach(player => {
+        axios({
+          url: `${apiUrl}/players/${player.id}`,
+          method: 'patch',
+          headers: {
+            'Authorization': `Token token=${this.props.user.token}`
+          },
+          data: { player }
         })
-        updatedPlayers.forEach(player => {
-          axios({
-            url: `${apiUrl}/players/${player.id}`,
-            method: 'patch',
-            headers: {
-              'Authorization': `Token token=${this.props.user.token}`
-            },
-            data: { player }
-          })
-        })
-      }
+      })
     }
   }
 
@@ -190,16 +184,16 @@ class ScoreKeeper extends Component {
       <Fragment>
         <h2>Score Keeper</h2>
         <Form onSubmit= {this.handleAddPlayer}>
-          <Form.Group controlId="nonsense">
+          <Form.Group controlId="add-player-form" className="add-player-form">
             <Form.Control as="select" name="selected" onChange={this.handleSelect}>
               {this.getPlayersList()}
             </Form.Control>
           </Form.Group>
-          <Button variant="primary" type="submit" className="m-1"> Add Player </Button>
+          <Button variant="primary" type="submit" className="m-1"> Add Player <i className="fas fa-user-plus"></i></Button>
         </Form>
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
-        <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner</Button>
-        <Button variant="secondary" onClick={this.handleReset} className="m-1">Reset Scores</Button>
+        {!this.scoresZero() && this.state.inPlay.length > 1 && <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner <i className="fas fa-trophy"></i></Button>}
+        {!this.scoresZero() && this.state.inPlay.length !== 0 && <Button variant="secondary" onClick={this.handleReset} className="m-1">Reset Scores <i className="fas fa-redo"></i></Button>}
       </Fragment>
     )
   }
