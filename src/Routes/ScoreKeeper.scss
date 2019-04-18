@@ -30,8 +30,14 @@ form {
   align-items: center;
   display: flex;
   flex-direction: row;
+  font-family: 'Roboto', sans-serif;
 }
 
 .form-group {
   margin-bottom: 0;
+}
+
+.score-button-container {
+  display: flex;
+  flex-direction: row;
 }

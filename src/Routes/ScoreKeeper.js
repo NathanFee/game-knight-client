@@ -132,7 +132,7 @@ class ScoreKeeper extends Component {
     if (tie.length > 1) {
       this.props.alert('There are no ties in Game Kight, Fight to the Death!!', 'danger')
     } else {
-      this.props.alert(`${winner.name} Wins!`, 'warning')
+      this.props.alert(`${winner.name} Wins!`, 'success')
 
       const updatedPlayers = this.state.inPlay.map(player => {
         if (player.id === winner.id) {
@@ -192,8 +192,10 @@ class ScoreKeeper extends Component {
           <Button variant="primary" type="submit" className="m-1"> Add Player <i className="fas fa-user-plus"></i></Button>
         </Form>
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
-        {!this.scoresZero() && this.state.inPlay.length > 1 && <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner <i className="fas fa-trophy"></i></Button>}
-        {!this.scoresZero() && this.state.inPlay.length !== 0 && <Button variant="secondary" onClick={this.handleReset} className="m-1">Reset Scores <i className="fas fa-redo"></i></Button>}
+        <div className="score-button-container">
+          {!this.scoresZero() && this.state.inPlay.length > 1 && <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner <i className="fas fa-trophy"></i></Button>}
+          {!this.scoresZero() && this.state.inPlay.length !== 0 && <Button variant="secondary" onClick={this.handleReset} className="m-1">Reset Scores <i className="fas fa-redo"></i></Button>}
+        </div>
       </Fragment>
     )
   }

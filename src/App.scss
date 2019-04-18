@@ -7,6 +7,7 @@ main {
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-family: 'Luckiest Guy', cursive;
   margin: auto;
 
   h1,
@@ -27,6 +28,7 @@ main {
 
   h3,
   input {
+    font-size: 1em;
     margin-bottom: 5%;
     width: 100%;
   }
