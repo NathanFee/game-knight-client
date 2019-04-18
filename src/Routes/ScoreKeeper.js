@@ -68,24 +68,32 @@ class ScoreKeeper extends Component {
     event.preventDefault()
     const { inPlay } = this.state
 
-    const updatePlayer = inPlay.map(player => {
-      player.score = 0
-      return player
-    })
-    this.setState({ inPlay: updatePlayer })
+    if (inPlay.length === 0) {
+      this.props.alert('No one can win unless, someone is playing... Unless you\'re Charlie Sheen... #winning', 'danger')
+    } else {
+      const updatePlayer = inPlay.map(player => {
+        player.score = 0
+        return player
+      })
+      this.setState({ inPlay: updatePlayer })
+    }
   }
 
   handleAddPlayer = () => {
     event.preventDefault()
     const selectedPlayerId = this.state.selectedPlayer
 
-    if (!this.state.inPlay.find(player => player.id === selectedPlayerId)) {
-      const addedPlayer = this.state.players.find(
-        player => { return player.id === selectedPlayerId }
-      )
-      this.setState({ inPlay: [...this.state.inPlay, addedPlayer] })
+    if (!selectedPlayerId) {
+      this.props.alert('Please create a player.', 'danger')
     } else {
-      this.props.alert('This player has already been added to the game.', 'danger')
+      if (!this.state.inPlay.find(player => player.id === selectedPlayerId)) {
+        const addedPlayer = this.state.players.find(
+          player => { return player.id === selectedPlayerId }
+        )
+        this.setState({ inPlay: [...this.state.inPlay, addedPlayer] })
+      } else {
+        this.props.alert('This player has already been added to the game.', 'danger')
+      }
     }
   }
 

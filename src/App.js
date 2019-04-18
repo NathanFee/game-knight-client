@@ -42,7 +42,7 @@ class App extends Component {
     // clears alerts after 2 seconds
     setTimeout(() => {
       this.setState({ alerts: [] })
-    }, 2000)
+    }, 3500)
   }
 
   render () {
