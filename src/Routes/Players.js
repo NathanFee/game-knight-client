@@ -45,7 +45,7 @@ class Players extends Component {
   )
 
   renderLoading = () => (
-    <p>Loading...</p>
+    <p>If you have not added players, please add players, else please wait while your page loads.</p>
   )
 
   render () {

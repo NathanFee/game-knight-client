@@ -42,7 +42,7 @@ class Player extends Component {
 
   render () {
     if (!this.state.player) {
-      return <p>loading...</p>
+      return <p>If you have not added players, please add players, else please wait while your page loads.</p>
     }
     if (this.state.shouldRedirect) {
       return <Redirect to={{
