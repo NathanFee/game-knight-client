@@ -13,19 +13,32 @@ class Players extends Component {
   }
   componentDidMount () {
     console.log('player mounted')
-    axios.get(apiUrl + '/players')
+    axios({
+      url: `${apiUrl}/players`,
+      method: 'get',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
       .then((response) => this.setState({
         players: response.data.players
       }))
       .catch(console.log)
   }
 
+  sortedPlayers = () => {
+    const playersCopy = this.state.players.slice(0)
+    const sortedPlayers = playersCopy.sort((a, b) => b.wins - a.wins)
+    return sortedPlayers
+  }
+
   renderPlayers = () => (
     <Fragment>
-      {this.state.players.map(player => (
+      <h2>Leader Board</h2>
+      {this.sortedPlayers().map(player => (
         <div key={player.id} className="player-div">
           <h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses} Score: {player.score}</p>
-          <Link to={'/players/' + player.id}>Edit</Link>
+          <Link to={'/players/' + player.id}>View</Link>
         </div>
       ))}
     </Fragment>

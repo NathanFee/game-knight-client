@@ -17,7 +17,13 @@ class PlayerEdit extends Component {
 
   componentDidMount () {
     const id = this.props.match.params.id
-    axios.get(`${apiUrl}/players/${id}`)
+    axios({
+      url: `${apiUrl}/players/${id}`,
+      method: 'get',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
       .then(response => this.setState({ player: response.data.player }))
       .catch(console.log)
   }

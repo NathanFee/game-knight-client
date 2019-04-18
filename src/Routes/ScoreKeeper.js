@@ -16,7 +16,13 @@ class ScoreKeeper extends Component {
 
   componentDidMount () {
     console.log('player mounted')
-    axios.get(apiUrl + '/players')
+    axios({
+      url: `${apiUrl}/players`,
+      method: 'get',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
       .then((response) => this.setState({
         players: response.data.players
       }))
