@@ -80,6 +80,7 @@ class PlayerCreate extends Component {
 
     return (
       <Fragment>
+        <h2>Create Player</h2>
         <Form onSubmit={this.handleSubmit}>
           <h4>Player Name: </h4>
           <Form.Group controlId="CreateEditForm">
