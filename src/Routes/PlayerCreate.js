@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Redirect } from 'react-router'
-import PlayerForm from './PlayerForm.js'
 import Sentencer from 'sentencer'
+import { Form, Button } from 'react-bootstrap'
 
 class PlayerCreate extends Component {
   constructor () {
@@ -72,25 +72,22 @@ class PlayerCreate extends Component {
   }
 
   render () {
-    const { player, created, message } = this.state
+    const { player, created } = this.state
 
     if (created) {
       return <Redirect to={`/players/${player.id}`} />
     }
 
-    const { name, wins, loses } = player
-
     return (
       <Fragment>
-        <PlayerForm
-          name = {name}
-          wins = {wins}
-          loses = {loses}
-          message = {message}
-          handleChange = {this.handleChange}
-          handleSubmit = {this.handleSubmit}
-          handleKnighted = {this.handleKnighted}
-        />
+        <Form onSubmit={this.handleSubmit}>
+          <h4>Player Name: </h4>
+          <Form.Group controlId="CreateEditForm">
+            <Form.Control type="text" value={player.name} name="name" required onChange={this.handleChange}/>
+          </Form.Group>
+          <Button variant="primary" className="m-1" onClick={this.handleKnighted}>Knight Player</Button>
+          <Button variant="primary" type="submit" className="m-1"> Submit </Button>
+        </Form>
       </Fragment>
     )
   }

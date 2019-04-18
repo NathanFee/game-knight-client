@@ -3,7 +3,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Redirect, withRouter } from 'react-router-dom'
 
-import PlayerForm from './PlayerForm.js'
+import PlayerForm from './PlayerEditForm.js'
 
 class PlayerEdit extends Component {
   constructor () {
@@ -60,7 +60,7 @@ class PlayerEdit extends Component {
   }
 
   render () {
-    const { player, updated, message } = this.state
+    const { player, updated } = this.state
 
     if (!player) {
       return <p>Loading...</p>
@@ -78,7 +78,6 @@ class PlayerEdit extends Component {
           name = {name}
           wins = {wins}
           loses = {loses}
-          message = {message}
           edit = {true}
           handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}

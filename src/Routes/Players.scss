@@ -2,10 +2,14 @@ $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
+$gold: #ffd700;
+$silver: #c0c0c0;
+$bronze: #cd7f32;
+$purple-haze: #ca9ef5;
 
 .player-div {
   align-items: center;
-  background-color: $success;
+  background-color: $purple-haze;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -24,4 +28,16 @@ $charcoal: #ccc;
     }
 
   }
+}
+
+.gold {
+  color: $gold;
+}
+
+.silver {
+  color: $silver;
+}
+
+.bronze {
+  color: $bronze;
 }

@@ -40,6 +40,18 @@ class Players extends Component {
     return sortedPlayers
   }
 
+  getTrophy = (index) => {
+    let trophy = ''
+    if (index === 1) {
+      trophy = 'fas fa-trophy gold'
+    } else if (index === 2) {
+      trophy = 'fas fa-trophy silver'
+    } else if (index === 3) {
+      trophy = 'fas fa-trophy bronze'
+    } else { trophy = 'fas fa-award' }
+    return trophy
+  }
+
   renderPlayers = () => (
     <Fragment>
       <h2>Leader Board</h2>
@@ -47,7 +59,7 @@ class Players extends Component {
         index++
         return (
           <div key={player.id} className="player-div">
-            <h2>{Ordinal(index)}</h2><h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
+            <h2><i className={this.getTrophy(index)}></i></h2><h2>{Ordinal(index)}</h2><h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
             <Link to={'/players/' + player.id}><i className="fas fa-search"></i></Link>
           </div>
         )
