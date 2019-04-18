@@ -64,6 +64,17 @@ class ScoreKeeper extends Component {
     this.setState({ inPlay: updatePlayer })
   }
 
+  handleReset = () => {
+    event.preventDefault()
+    const { inPlay } = this.state
+
+    const updatePlayer = inPlay.map(player => {
+      player.score = 0
+      return player
+    })
+    this.setState({ inPlay: updatePlayer })
+  }
+
   renderInPlay = () => {
     const { inPlay } = this.state
     return (
@@ -127,13 +138,14 @@ class ScoreKeeper extends Component {
       const updatedPlayers = this.state.inPlay.map(player => {
         if (player.id === winner.id) {
           player.wins += 1
+          player.score = 0
           return player
         } else {
           player.loses += 1
+          player.score = 0
           return player
         }
       })
-      console.log(updatedPlayers)
       updatedPlayers.forEach(player => {
         axios({
           url: `${apiUrl}/players/${player.id}`,
@@ -161,6 +173,7 @@ class ScoreKeeper extends Component {
         </Form>
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
         <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner</Button>
+        <Button variant="secondary" onClick={this.handleReset} className="m-1">Reset Scores</Button>
       </Fragment>
     )
   }
