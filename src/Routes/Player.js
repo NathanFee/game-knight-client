@@ -35,6 +35,7 @@ class Player extends Component {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
+      .then(() => this.props.alert('Player deleted.', 'success'))
       .then(() => this.setState({ shouldRedirect: true }))
       .catch(console.log)
   }
