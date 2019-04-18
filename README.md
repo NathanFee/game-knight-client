@@ -19,6 +19,14 @@ You can add or remove players from a game and see all players scores and update 
 ## Screen Shot of App
 ![Screen Shot](https://i.imgur.com/0Qlbo4m.png)
 
+## Set Up and Install instructions
+1. Fork and clone this repository.
+2. Install dependencies with npm install.
+3. Utalize npm run start to launch app locally. 
+    - Be sure to follow set up instructions for game-knight-api.
+    - [API Repository](https://github.com/NathanFee/game-knight-api)
+4. Utalize npm run deploy to deploy site to GH pages.
+
 ## Wire Frames
 ![Wire Frames](https://i.imgur.com/7lS2YkR.jpg)
 
