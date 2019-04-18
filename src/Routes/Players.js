@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig.js'
 import { Link } from 'react-router-dom'
+import Ordinal from 'ordinal'
 
 class Players extends Component {
   constructor () {
@@ -46,7 +47,7 @@ class Players extends Component {
         index++
         return (
           <div key={player.id} className="player-div">
-            <h1>{index}</h1><h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
+            <h2>{Ordinal(index)}</h2><h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
             <Link to={'/players/' + player.id}><i className="fas fa-search"></i></Link>
           </div>
         )
