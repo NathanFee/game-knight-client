@@ -37,7 +37,7 @@ class Player extends Component {
     })
       .then(() => this.props.alert('Player deleted.', 'success'))
       .then(() => this.setState({ shouldRedirect: true }))
-      .catch(console.log)
+      .catch(() => this.props.alert('Player failed deleted.', 'danger'))
   }
 
   render () {

@@ -13,7 +13,6 @@ class Players extends Component {
     }
   }
   componentDidMount () {
-    console.log('player mounted')
     axios({
       url: `${apiUrl}/players`,
       method: 'get',
@@ -72,7 +71,6 @@ class Players extends Component {
   )
 
   render () {
-    console.log('players rendered')
     return (
       <Fragment>
         {this.state.players.length === 0 ? this.renderLoading() : this.renderPlayers()}

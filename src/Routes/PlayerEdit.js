@@ -25,7 +25,7 @@ class PlayerEdit extends Component {
       }
     })
       .then(response => this.setState({ player: response.data.player }))
-      .catch(console.log)
+      .catch(() => this.props.alert('Whoops! Something went wrong, try again later.', 'danger'))
   }
 
   handleSubmit = (event) => {

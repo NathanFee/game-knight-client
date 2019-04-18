@@ -15,7 +15,6 @@ class ScoreKeeper extends Component {
   }
 
   componentDidMount () {
-    console.log('player mounted')
     axios({
       url: `${apiUrl}/players`,
       method: 'get',
@@ -29,7 +28,7 @@ class ScoreKeeper extends Component {
       .then(() => this.setState({
         selectedPlayer: this.state.players[0].id
       }))
-      .catch(console.log)
+      .catch(() => this.props.alert('Whoops! You need to add players.', 'danger'))
   }
 
   handleAdd = (event) => {
@@ -183,7 +182,7 @@ class ScoreKeeper extends Component {
     return (
       <Fragment>
         <h2>Score Keeper</h2>
-        <Form onSubmit= {this.handleAddPlayer}>
+        {this.state.players.length !== 0 && <Form onSubmit= {this.handleAddPlayer}>
           <Form.Group controlId="add-player-form" className="add-player-form">
             <Form.Control as="select" name="selected" onChange={this.handleSelect}>
               {this.getPlayersList()}
@@ -191,6 +190,7 @@ class ScoreKeeper extends Component {
           </Form.Group>
           <Button variant="primary" type="submit" className="m-1"> Add Player <i className="fas fa-user-plus"></i></Button>
         </Form>
+        }
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
         <div className="score-button-container">
           {!this.scoresZero() && this.state.inPlay.length > 1 && <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner <i className="fas fa-trophy"></i></Button>}
