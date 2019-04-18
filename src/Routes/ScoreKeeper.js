@@ -128,34 +128,42 @@ class ScoreKeeper extends Component {
 
     if (this.state.inPlay.length === 0) {
       this.props.alert('Someone has to be playing to win.', 'danger')
+    } else if (this.state.inPlay.length === 1) {
+      this.props.alert('Get some friends and come back.', 'danger')
     } else {
       const winner = this.state.inPlay.reduce(
         (player, winner) => player.score > winner.score ? player : winner, this.state.inPlay[0]
       )
 
-      this.props.alert(`${winner.name} Wins!`, 'warning')
+      const tie = this.state.inPlay.filter(player => player.score === winner.score)
 
-      const updatedPlayers = this.state.inPlay.map(player => {
-        if (player.id === winner.id) {
-          player.wins += 1
-          player.score = 0
-          return player
-        } else {
-          player.loses += 1
-          player.score = 0
-          return player
-        }
-      })
-      updatedPlayers.forEach(player => {
-        axios({
-          url: `${apiUrl}/players/${player.id}`,
-          method: 'patch',
-          headers: {
-            'Authorization': `Token token=${this.props.user.token}`
-          },
-          data: { player }
+      if (tie.length > 1) {
+        this.props.alert('There are no ties in Game Kight, Fight to the Death!!', 'danger')
+      } else {
+        this.props.alert(`${winner.name} Wins!`, 'warning')
+
+        const updatedPlayers = this.state.inPlay.map(player => {
+          if (player.id === winner.id) {
+            player.wins += 1
+            player.score = 0
+            return player
+          } else {
+            player.loses += 1
+            player.score = 0
+            return player
+          }
         })
-      })
+        updatedPlayers.forEach(player => {
+          axios({
+            url: `${apiUrl}/players/${player.id}`,
+            method: 'patch',
+            headers: {
+              'Authorization': `Token token=${this.props.user.token}`
+            },
+            data: { player }
+          })
+        })
+      }
     }
   }
 
