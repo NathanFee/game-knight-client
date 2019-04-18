@@ -48,14 +48,13 @@ class Player extends Component {
         pathname: '/players'
       }}/>
     }
-    const { name, score, wins, loses } = this.state.player
+    const { name, wins, loses } = this.state.player
 
     return (
       <Fragment>
         <h3>{name}</h3>
-        <p>Score: {score}</p>
-        <p>wins: {wins}</p>
-        <p>loses: {loses}</p>
+        <p>Wins: {wins}</p>
+        <p>Loses: {loses}</p>
         <Button variant="danger" className="m-1" onClick={this.handleDelete}>Delete</Button>
         <Link to={this.props.match.url + '/edit'}><Button variant="info" className="m-1">Edit</Button></Link>
 

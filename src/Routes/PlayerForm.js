@@ -17,11 +17,6 @@ const PlayerForm = (
       { edit &&
         <Fragment>
           <Form.Group controlId="CreateEditForm">
-            <Form.Label>Score</Form.Label>
-            <Form.Control type="text" value={score} name="score" onChange={handleChange} />
-          </Form.Group>
-
-          <Form.Group controlId="CreateEditForm">
             <Form.Label>Wins</Form.Label>
             <Form.Control type="integer" value={wins} name="wins" onChange={handleChange} />
           </Form.Group>

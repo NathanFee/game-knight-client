@@ -70,13 +70,12 @@ class PlayerEdit extends Component {
       return <Redirect to={`/players/${player.id}`} />
     }
 
-    const { name, score, wins, loses } = player
+    const { name, wins, loses } = player
 
     return (
       <Fragment>
         <PlayerForm
           name = {name}
-          score = {score}
           wins = {wins}
           loses = {loses}
           message = {message}

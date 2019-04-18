@@ -37,7 +37,7 @@ class Players extends Component {
       <h2>Leader Board</h2>
       {this.sortedPlayers().map(player => (
         <div key={player.id} className="player-div">
-          <h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses} Score: {player.score}</p>
+          <h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
           <Link to={'/players/' + player.id}>View</Link>
         </div>
       ))}
