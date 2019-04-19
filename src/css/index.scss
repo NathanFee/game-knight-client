@@ -6,10 +6,8 @@ body {
 
 .alert {
   left: 0;
-  margin: auto;
   opacity: .75;
-  position: relative;
-  right: 0;
+  position: absolute;
   top: 0;
   z-index: 100;
 }
