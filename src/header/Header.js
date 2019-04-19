@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import MenuOptions from '../Routes/MenuOptions.js'
+import { Button } from 'react-bootstrap'
 
 import './Header.scss'
 
@@ -24,6 +24,22 @@ const alwaysOptions = (
   </React.Fragment>
 )
 
+const menuOptions = (
+  <Fragment>
+    <Link to="/players">
+      <Button name="leaderBoardButton" variant="secondary" className="m-1">Leader Board</Button>
+    </Link>
+
+    <Link to="/player-create">
+      <Button name="createPlayerButton" variant="secondary" className="m-1">Create New Player</Button>
+    </Link>
+
+    <Link to="/score-keeper">
+      <Button name="scoreKeeperButton" variant="secondary" className="m-1">Score Keeper</Button>
+    </Link>
+  </Fragment>
+)
+
 const Header = ({ user }) => (
   <Fragment>
     <header className="main-header">
@@ -34,7 +50,7 @@ const Header = ({ user }) => (
         { alwaysOptions }
       </nav>
     </header>
-    <nav className="game-knight-menu">{ user ? <MenuOptions/> : '' }</nav>
+    <nav className="game-knight-menu">{ user ? menuOptions : '' }</nav>
   </Fragment>
 )
 
