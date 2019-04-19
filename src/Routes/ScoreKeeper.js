@@ -92,6 +92,11 @@ class ScoreKeeper extends Component {
     }
   }
 
+  handleAddAll = () => {
+    const allPlayers = this.state.players.slice(0)
+    this.setState({ inPlay: allPlayers })
+  }
+
   handleRemovePlayer = (event) => {
     event.preventDefault()
     const playerId = parseInt(event.target.name)
@@ -192,6 +197,7 @@ class ScoreKeeper extends Component {
           <Button variant="primary" type="submit" className="m-1"> Add Player <i className="fas fa-user-plus"></i></Button>
         </Form>
         }
+        {this.state.players.length !== 0 && <Button variant="warning" className="m-1" onClick={this.handleAddAll}> Add All Players <i className="fas fa-users"></i></Button>}
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
         <div className="score-button-container">
           {!this.scoresZero() && this.state.inPlay.length > 1 && <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner <i className="fas fa-trophy"></i></Button>}
