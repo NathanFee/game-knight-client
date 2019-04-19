@@ -47,7 +47,7 @@ class Player extends Component {
     }
     if (this.state.shouldRedirect) {
       return <Redirect to={{
-        pathname: '/players'
+        pathname: '/'
       }}/>
     }
     const { name, wins, loses } = this.state.player
