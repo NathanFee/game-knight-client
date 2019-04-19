@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import './ScoreKeeper.scss'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../apiConfig.js'
@@ -192,16 +193,18 @@ class ScoreKeeper extends Component {
     return (
       <Fragment>
         <h2>Score Keeper</h2>
-        {this.state.players.length !== 0 && <Form onSubmit= {this.handleAddPlayer}>
-          <Form.Group controlId="add-player-form" className="add-player-form">
-            <Form.Control as="select" name="selected" onChange={this.handleSelect}>
-              {this.getPlayersList()}
-            </Form.Control>
-          </Form.Group>
-          <Button variant="primary" type="submit" className="m-1"> Add Player <i className="fas fa-user-plus"></i></Button>
-        </Form>
-        }
-        {this.state.players.length !== 0 && <Button variant="warning" className="m-1" onClick={this.handleAddAll}> Add All Players <i className="fas fa-users"></i></Button>}
+        <div className="add-players-div">
+          {this.state.players.length !== 0 && <Form onSubmit= {this.handleAddPlayer}>
+            <Form.Group controlId="add-player-form" className="add-player-form">
+              <Form.Control as="select" name="selected" onChange={this.handleSelect}>
+                {this.getPlayersList()}
+              </Form.Control>
+            </Form.Group>
+            <Button variant="primary" type="submit" className="m-1"> Add Player <i className="fas fa-user-plus"></i></Button>
+          </Form>
+          }
+          {this.state.players.length !== 0 && <Button variant="warning" className="m-1" onClick={this.handleAddAll}> Add All Players <i className="fas fa-users"></i></Button>}
+        </div>
         {this.state.inPlay.length !== 0 && this.renderInPlay()}
         <div className="score-button-container">
           {!this.scoresZero() && this.state.inPlay.length > 1 && <Button variant="success" onClick={this.handleWinner} className="m-1">Declare Winner <i className="fas fa-trophy"></i></Button>}

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import './Players.scss'
 import axios from 'axios'
 import apiUrl from '../apiConfig.js'
 import { Link } from 'react-router-dom'
@@ -57,9 +58,12 @@ class Players extends Component {
       {this.sortedPlayers().map((player, index) => {
         index++
         return (
-          <div key={player.id} className="player-div">
-            <h2><i className={this.getTrophy(index)}></i></h2><h2>{Ordinal(index)}</h2><h3>{player.name}</h3> <p>Wins: {player.wins} Loses: {player.loses}</p>
-            <Link to={'/players/' + player.id}><i className="fas fa-search"></i></Link>
+          <div key={player.id} className="players-div">
+            <h2><i className={this.getTrophy(index)}></i></h2><h2>{Ordinal(index)}</h2><h3>{player.name}</h3>
+            <div className="win-loss-div">
+              <p>Wins: <span>{player.wins}</span> Loses: <span>{player.loses}</span></p>
+            </div>
+            <Link to={'/players/' + player.id}><h5><i className="fas fa-search"></i></h5></Link>
           </div>
         )
       }) }

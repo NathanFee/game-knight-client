@@ -6,8 +6,9 @@ $gold: #ffd700;
 $silver: #c0c0c0;
 $bronze: #cd7f32;
 $purple-haze: #ca9ef5;
+$limegreen: #32CD32;
 
-.player-div {
+.players-div {
   align-items: center;
   background-color: $purple-haze;
   border-radius: 10px;
@@ -16,7 +17,7 @@ $purple-haze: #ca9ef5;
   justify-content: space-between;
   margin: 10px auto;
   padding: 10px;
-  width: 50vw;
+  width: 60vw;
 
   .end-container {
     align-items: center;
@@ -26,7 +27,10 @@ $purple-haze: #ca9ef5;
     h4 {
       margin-right: 20px;
     }
+  }
 
+  span {
+    font-size: 1.5em;
   }
 }
 

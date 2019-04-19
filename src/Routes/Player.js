@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig.js'
 import { Redirect, Link, withRouter } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import './Player.scss'
 
 class Player extends Component {
   constructor () {
@@ -52,14 +53,13 @@ class Player extends Component {
     const { name, wins, loses } = this.state.player
 
     return (
-      <Fragment>
+      <div className="player-div">
+        <Link to={this.props.match.url + '/edit'}><Button variant="info" className="m-1 edit-button"><i className="fas fa-user-edit"></i></Button></Link>
         <h3>{name}</h3>
         <p>Wins: {wins}</p>
         <p>Loses: {loses}</p>
         <Button variant="danger" className="m-1" onClick={this.handleDelete}>Delete</Button>
-        <Link to={this.props.match.url + '/edit'}><Button variant="info" className="m-1">Edit</Button></Link>
-
-      </Fragment>
+      </div>
     )
   }
 }

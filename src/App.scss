@@ -21,14 +21,14 @@ main {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Luckiest Guy', cursive;
   justify-content: center;
   margin-top: 15px;
   padding: 10px;
   width: 300px;
 
-  h3,
   input {
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1em;
     margin-bottom: 5%;
     width: 100%;
@@ -54,4 +54,8 @@ main {
   p {
     font-size: 1.5em;
   }
+}
+
+.edit-player-div {
+
 }

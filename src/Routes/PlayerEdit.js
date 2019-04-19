@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Redirect, withRouter } from 'react-router-dom'
+import './PlayerEdit.scss'
 
 import PlayerForm from './PlayerEditForm.js'
 
@@ -73,7 +74,8 @@ class PlayerEdit extends Component {
     const { name, wins, loses } = player
 
     return (
-      <Fragment>
+      <div className= "player-edit-div">
+        <h2>Edit Player</h2>
         <PlayerForm
           name = {name}
           wins = {wins}
@@ -82,7 +84,7 @@ class PlayerEdit extends Component {
           handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}
         />
-      </Fragment>
+      </div>
     )
   }
 }

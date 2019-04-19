@@ -1,0 +1,18 @@
+$midnight: #000;
+
+.player-div {
+  border: 2px solid $midnight;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 10px;
+
+  .edit-button {
+    border-radius: 100px;
+  }
+
+  a {
+    align-self: flex-end;
+  }
+}
