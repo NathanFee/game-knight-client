@@ -93,8 +93,12 @@ class ScoreKeeper extends Component {
   }
 
   handleAddAll = () => {
-    const allPlayers = this.state.players.slice(0)
-    this.setState({ inPlay: allPlayers })
+    if (this.state.players.length === this.state.inPlay.length) {
+      this.props.alert('All player have already been added to the game.', 'danger')
+    } else {
+      const allPlayers = this.state.players.slice(0)
+      this.setState({ inPlay: allPlayers })
+    }
   }
 
   handleRemovePlayer = (event) => {
@@ -158,8 +162,8 @@ class ScoreKeeper extends Component {
           },
           data: { player }
         })
+          .catch(() => this.props.alert('Whoops! Players failed to update, please try again later.', 'danger'))
       })
-        .catch(() => this.props.alert('Whoops! Players failed to update, please try again later.', 'danger'))
     }
   }
 
