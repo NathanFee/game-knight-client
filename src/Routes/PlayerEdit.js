@@ -43,10 +43,8 @@ class PlayerEdit extends Component {
       data: { player }
     })
       .then(() => this.setState({ updated: true }))
-      .catch(() => {
-        this.props.alert('Error on update.', 'danger')
-        this.setState({ player: { ...player, name: '', score: '', wins: '', loses: '' } })
-      })
+      .catch(() => this.props.alert('Error on update. Please try again later.', 'danger'))
+      .then(() => this.setState({ player: { ...player, name: '', score: '', wins: '', loses: '' } }))
   }
 
   handleChange = event => {
