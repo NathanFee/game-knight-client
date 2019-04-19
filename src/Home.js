@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const Home = () => (
-  <Fragment>
+  <div className="home-message">
     <h2>Game Knight</h2>
     <p>The perfect companion to your game nights.</p>
-  </Fragment>
+  </div>
 )
 
 export default Home

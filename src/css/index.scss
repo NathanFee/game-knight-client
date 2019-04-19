@@ -5,5 +5,8 @@ body {
 }
 
 .alert {
-  margin: 30px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 100;
 }

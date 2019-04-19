@@ -51,7 +51,7 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
+          <Alert key={index} dismissible variant={alert.type} style={ { zIndex: '100' } }>
             <Alert.Heading>
               {alert.message}
             </Alert.Heading>
