@@ -38,9 +38,10 @@ class PlayerCreate extends Component {
         created: true,
         player: response.data.player
       }))
-      .catch(() => this.setState({
-        player: { ...player, name: '', score: 0, wins: 0, loses: 0, playing: false }
-      }))
+      .catch(
+        () => this.props.alert('Whoops! Failed to create player, please try again later.', 'danger'),
+        () => this.setState({ player: { ...player, name: '', score: 0, wins: 0, loses: 0, playing: false }
+        }))
   }
 
   handleChange = event => {

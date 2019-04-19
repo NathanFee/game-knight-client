@@ -28,7 +28,7 @@ class ScoreKeeper extends Component {
       .then(() => this.setState({
         selectedPlayer: this.state.players[0].id
       }))
-      .catch(() => this.props.alert('Whoops! You need to add players.', 'danger'))
+      .catch(() => this.props.alert('Whoops! Either you need to add players or something went wrong.', 'danger'))
   }
 
   handleAdd = (event) => {
@@ -154,6 +154,7 @@ class ScoreKeeper extends Component {
           data: { player }
         })
       })
+        .catch(() => this.props.alert('Whoops! Players failed to update, please try again later.', 'danger'))
     }
   }
 

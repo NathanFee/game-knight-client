@@ -63,7 +63,7 @@ class PlayerEdit extends Component {
     const { player, updated } = this.state
 
     if (!player) {
-      return <p>Loading...</p>
+      return <p>Loading... Either our server is running slow or something has gone awry!</p>
     }
 
     if (updated) {

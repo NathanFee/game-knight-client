@@ -23,7 +23,7 @@ class Players extends Component {
       .then((response) => this.setState({
         players: response.data.players
       }))
-      .catch(console.log)
+      .catch(() => this.props.alert('Whoops! Something went wrong, please try again later.', 'danger'))
   }
 
   sortedPlayers = () => {

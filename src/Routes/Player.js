@@ -24,7 +24,7 @@ class Player extends Component {
       }
     })
       .then(response => this.setState({ player: response.data.player }))
-      .catch(console.error)
+      .catch(() => this.props.alert('Whoops! Something went wrong, please try again later.', 'danger'))
   }
 
   handleDelete = () => {
