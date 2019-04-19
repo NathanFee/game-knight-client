@@ -2,6 +2,7 @@ $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
+$pitch-black: #000;
 
 main {
   align-items: center;
@@ -18,6 +19,7 @@ main {
 
 .auth-form {
   background-color: $charcoal;
+  border: 4px solid $pitch-black;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
